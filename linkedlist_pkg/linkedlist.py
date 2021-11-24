@@ -142,6 +142,6 @@ if __name__ == '__main__':
     objll.print_nodes()
     print(f'# =======================Searching a node with data, the index of that node is=======================')
     index = objll.search_linkedlist(int(input()))
-    print('index ', 'FOUND: ' + str(index) if index > 0 else 'NOT FOUND!')
+    print('index ', 'FOUND: ' + str(index) if index >= 0 else 'NOT FOUND!')
 
 
