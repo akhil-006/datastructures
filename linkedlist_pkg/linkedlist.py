@@ -68,7 +68,7 @@ class LinkedList:
         node_idx = 0
         curr = self.head
         if not curr:
-            raise TypeError('Delete Failed: Linked-list is empty!')
+            raise TypeError('Delete Failed: Linked list is empty!')
 
         if node_idx == pos:
             curr = curr.next
@@ -84,6 +84,22 @@ class LinkedList:
             node_idx += 1
 
         prev.next = curr.next
+
+    def search_linkedlist(self, data):
+        node_idx = 0
+        curr = self.head
+        if not curr:
+            print('Linked list is empty!')
+            return
+
+        while curr.data != data:
+            curr = curr.next
+            node_idx += 1
+            if not curr:
+                node_idx = -1
+                break
+
+        return node_idx
 
     def print_nodes(self):
         curr = self.head
@@ -124,4 +140,8 @@ if __name__ == '__main__':
     print(f'# =======================Deleting node at position={pos}, the linked-list is=======================')
     objll.delete_node_after(pos)
     objll.print_nodes()
+    print(f'# =======================Searching a node with data, the index of that node is=======================')
+    index = objll.search_linkedlist(int(input()))
+    print('index ', 'FOUND: ' + str(index) if index > 0 else 'NOT FOUND!')
+
 
