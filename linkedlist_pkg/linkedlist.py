@@ -31,11 +31,13 @@ class LinkedList:
             self.head = None
             return
 
+        prev = None
         while curr and curr.next:
             prev = curr
             curr = prev.next
 
-        prev.next = None
+        if prev:
+            prev.next = None
 
     def insert_node_after(self, pos, node):
         if not node:
