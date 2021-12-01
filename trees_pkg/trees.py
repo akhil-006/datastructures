@@ -24,25 +24,56 @@ class BinaryTree:
         if node.data <= root.data:
             left = root.left
             if not left:
-                # no harm in setting left = node but you can do it directly thereby descraesing time complexity
+                # no harm in setting left = node but you can do it directly thereby decreasing time complexity
                 # left = node
                 # root.left = left
                 root.left = node
             else:
-                while left.left and node.data <= left.data:
-                    left = left.left
-                left.left = node
+                while left and node.data <= left.data:
+                    if not left.left:
+                        left.left = node
+                        return
+                    else:
+                        left = left.left
 
-        if node.data > root.data:
+                left = root.left
+                right = left.right
+                if not right:
+                    left.right = node
+                else:
+                    while right and node.data > right.data:
+                        if not right.right:
+                            right.right = node
+                            return
+                        else:
+                            right = right.right
+                    else:
+                        left.right = node
+        else:
             right = root.right
             if not right:
-                # right = node
-                # root.right = right
                 root.right = node
             else:
-                while right.right and node.data > right.data:
-                    right = right.right
-                right.right = node
+                while right and node.data > right.data:
+                    if not right.right and node.data > right.data:
+                        right.right = node
+                        return
+                    else:
+                        right = right.right
+                else:
+                    right.right = node
+
+                right = root.right
+                left = right.left
+                if not left:
+                    right.left = node
+                else:
+                    while left and node.data <= left.data:
+                        if not left.left and node.data <= left.data:
+                            right.left = node
+                            return
+                        else:
+                            left = right.left
 
     def print_nodes(self):
         if not self.node:
@@ -59,17 +90,25 @@ class BinaryTree:
 
 
 if __name__ == '__main__':
-    root = Node(10)
-    node1 = Node(9)
-    node2 = Node(11)
-    node3 = Node(7)
-    node4 = Node(12)
-    node5 = Node(12)
+    root = Node(100)
+    node1 = Node(60)
+    node2 = Node(150)
+    node3 = Node(60)
+    node4 = Node(70)
+    node5 = Node(50)
+    node6 = Node(80)
+    node7 = Node(6)
+    node8 = Node(88)
+    node9 = Node(188)
     objBT = BinaryTree(root)
     objBT.insert(node1)
     objBT.insert(node2)
     objBT.insert(node3)
     objBT.insert(node4)
     objBT.insert(node5)
+    objBT.insert(node6)
+    objBT.insert(node7)
+    objBT.insert(node8)
+    objBT.insert(node9)
     objBT.print_nodes()
 
