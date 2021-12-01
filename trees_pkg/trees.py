@@ -36,7 +36,6 @@ class BinaryTree:
                     else:
                         left = left.left
 
-                # left = root.left
                 right = left.right
                 if not right:
                     left.right = node
@@ -60,10 +59,7 @@ class BinaryTree:
                         return
                     else:
                         right = right.right
-                # else:
-                #     right.right = node
 
-                # right = root.right
                 left = right.left
                 if not left:
                     right.left = node
