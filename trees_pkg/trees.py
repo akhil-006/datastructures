@@ -81,12 +81,18 @@ class BinaryTree:
         left = self.node.left
         while left:
             print(left.data)
+            right = left.right
             left = left.left
+            if right:
+                print(right.data)
         print(self.node.data)
         right = self.node.right
         while right:
             print(right.data)
+            left = right.left
             right = right.right
+            if left:
+                print(left.data)
 
 
 if __name__ == '__main__':
