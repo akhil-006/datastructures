@@ -36,7 +36,7 @@ class BinaryTree:
                     else:
                         left = left.left
 
-                left = root.left
+                # left = root.left
                 right = left.right
                 if not right:
                     left.right = node
@@ -55,21 +55,21 @@ class BinaryTree:
                 root.right = node
             else:
                 while right and node.data > right.data:
-                    if not right.right and node.data > right.data:
+                    if not right.right:
                         right.right = node
                         return
                     else:
                         right = right.right
-                else:
-                    right.right = node
+                # else:
+                #     right.right = node
 
-                right = root.right
+                # right = root.right
                 left = right.left
                 if not left:
                     right.left = node
                 else:
                     while left and node.data <= left.data:
-                        if not left.left and node.data <= left.data:
+                        if not left.left:
                             right.left = node
                             return
                         else:
@@ -106,7 +106,10 @@ if __name__ == '__main__':
     node7 = Node(6)
     node8 = Node(88)
     node9 = Node(188)
+    node10 = Node(0)
+    node11 = Node(152)
     objBT = BinaryTree(root)
+    objBT.insert(node11)
     objBT.insert(node1)
     objBT.insert(node2)
     objBT.insert(node3)
@@ -116,5 +119,6 @@ if __name__ == '__main__':
     objBT.insert(node7)
     objBT.insert(node8)
     objBT.insert(node9)
+    objBT.insert(node10)
     objBT.print_nodes()
 
